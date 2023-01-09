@@ -1,5 +1,5 @@
 ﻿namespace GRPC_Product_Service.Services;
 
-public class ProductService
+public class ProductService : Sample.SampleBase
 {
 }
