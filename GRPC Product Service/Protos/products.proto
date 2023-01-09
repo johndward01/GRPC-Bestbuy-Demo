@@ -2,20 +2,29 @@ syntax = "proto3";
 
 option csharp_namespace = "GRPC_Product_Service";
 
-package greet;
+package products;
 
 // The greeting service definition.
-service Greeter {
+service Products {
   // Sends a greeting
-  rpc SayHello (HelloRequest) returns (HelloReply);
+  rpc GetAllProducts (GetAllProductsRequest) returns (GetAllProductsReply);
 }
 
 // The request message containing the user's name.
-message HelloRequest {
-  string name = 1;
+message GetAllProductsRequest {
+  int ProductID = 1;
+  string Name = 2;
+  double Price = 3;
+  int CategoryID = 4;
+  int OnSale = 5;
+  int StockLevel = 6;
+  //TODO: IEnumerable<Category> Categories = 7; READ HERE: https://learn.microsoft.com/en-us/dotnet/architecture/grpc-for-wcf-developers/protocol-buffers 
 }
 
 // The response message containing the greetings.
-message HelloReply {
+message GetAllProductsReply {
   string message = 1;
 }
+
+
+
