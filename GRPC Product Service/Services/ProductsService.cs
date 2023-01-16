@@ -32,12 +32,12 @@ public class ProductsService : Products.ProductsBase
         {
             return Task.FromResult(new GetProductReply
             {
-                ProductID = 100,
-                Name = "Oops",
-                Price = 100.99,
-                CategoryID = 10,
+                ProductID = 0,
+                Name = "NULL",
+                Price = 0,
+                CategoryID = 0,
                 OnSale = 0,
-                StockLevel = 100,
+                StockLevel = 0,
             });
         }        
     }
