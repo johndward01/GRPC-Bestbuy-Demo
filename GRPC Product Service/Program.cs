@@ -27,31 +27,8 @@ app.MapGrpcService<ProductsService>();
 app.MapGet("/", () => "Communication with gRPC endpoints must be made through a gRPC client." +
 " To learn how to create a client, visit: https://go.microsoft.com/fwlink/?linkid=2086909");
 
-app.MapGet("/", () => "Hello Mock Bestbuy API!");
-app.MapGet("/GetAllProducts", (IProductRepository productRepo) => productRepo.GetAllProducts());
 
-app.MapPost("/InsertProduct", (IProductRepository productRepo, Product product) =>
-{
-    int lastProductId = productRepo.GetAllProducts().LastOrDefault().ProductID;
-    product.ProductID = ++lastProductId;
-    productRepo.InsertProduct(product);
-});
 
-app.MapPut("/UpdateProduct/{id:int}", (IProductRepository productRepo, Product inputProduct, int id) =>
-{
-    var productToUpdate = productRepo.GetProduct(id);
-    productToUpdate.Name = inputProduct.Name;
-    productToUpdate.Price = inputProduct.Price;
-    productToUpdate.CategoryID = inputProduct.CategoryID;
-    productToUpdate.OnSale = inputProduct.OnSale;
-    productToUpdate.StockLevel = inputProduct.StockLevel;
-    productRepo.UpdateProduct(productToUpdate);
-});
-
-app.MapDelete("/DeleteProduct/{id:int}", (IProductRepository productRepo, int id) =>
-{
-    productRepo.DeleteProduct(new Product() { ProductID = id });
-});
 
 
 app.Run();
