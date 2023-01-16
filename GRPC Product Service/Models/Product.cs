@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace BestBuyProductRepo.Models;
-internal class Product
+public class Product
 {
     public int ProductID { get; set; }
     public string Name { get; set; }

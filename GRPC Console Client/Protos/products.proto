@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option csharp_namespace = "GRPC_Product_Service";
+option csharp_namespace = "GRPC_Console_Client";
 
 package products;
 

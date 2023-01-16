@@ -6,7 +6,7 @@ using System.Data;
 namespace BestBuyProductService.Repositories;
 
 
-internal class ProductRepo : IProductRepository
+public class ProductRepo : IProductRepository
 {
     private readonly IDbConnection _conn;
 
@@ -23,7 +23,7 @@ internal class ProductRepo : IProductRepository
 
     public Product GetProduct(int id)
     {
-        return _conn.QuerySingle<Product>("SELECT * FROM PRODUCTS WHERE PRODUCTID = @id",
+        return _conn.QuerySingleOrDefault<Product>("SELECT * FROM PRODUCTS WHERE PRODUCTID = @id",
             new { id = id });
     }
 
