@@ -39,7 +39,6 @@ public class ProductsService : Products.ProductsBase
                 OnSale = 0,
                 StockLevel = 100,
             });
-        }
-        
+        }        
     }
 }
