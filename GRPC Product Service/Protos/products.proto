@@ -5,14 +5,15 @@ option csharp_namespace = "GRPC_Product_Service";
 package products;
 
 service Products {
-  rpc GetProduct (GetProductRequest) returns (GetProductReply);
+  rpc GetProduct (ProductId) returns (Product);
+  rpc GetAllProducts (Empty) returns (ProductList);
+  rpc UpdateProduct (Product) returns (Product);
+  rpc DeleteProduct (ProductId) returns (Empty);
 }
 
-message GetProductRequest {
-  int32 ProductID = 1;  
-}
+message Empty {}
 
-message GetProductReply {
+message Product {
 	int32 ProductID = 1;
 	string Name = 2;
 	double Price = 3;
@@ -20,6 +21,16 @@ message GetProductReply {
 	int32 OnSale = 5;
 	int32 StockLevel = 6;
 }
+
+message ProductList {
+  repeated Product products = 1;
+}
+
+message ProductId {
+	int32 id = 1;
+}
+
+
 
 
 

@@ -13,12 +13,12 @@ public class ProductsService : Products.ProductsBase
         _repository = repository;
     }
 
-    public override Task<GetProductReply> GetProduct(GetProductRequest request, ServerCallContext context)
+    public override Task<Product> GetProduct(ProductId id, ServerCallContext context)
     {
-        var product = _repository.GetProduct(request.ProductID);
+        var product = _repository.GetProduct(id.Id);
         if (product != null)
         {
-            return Task.FromResult(new GetProductReply
+            return Task.FromResult(new Product
             {
                 ProductID = product.ProductID,
                 Name = product.Name,
@@ -30,7 +30,7 @@ public class ProductsService : Products.ProductsBase
         }
         else
         {
-            return Task.FromResult(new GetProductReply
+            return Task.FromResult(new Product
             {
                 ProductID = 0,
                 Name = "NULL",
