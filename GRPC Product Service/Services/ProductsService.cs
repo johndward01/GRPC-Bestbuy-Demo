@@ -55,7 +55,7 @@ public class ProductsService : Products.ProductsBase
             CategoryID = p.CategoryID,
             OnSale = p.OnSale,
             StockLevel = p.StockLevel,
-        }));
+        })); 
 
         return Task.FromResult(productList);
     }
