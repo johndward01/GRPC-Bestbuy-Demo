@@ -41,4 +41,22 @@ public class ProductsService : Products.ProductsBase
             });
         }        
     }
+
+    public override Task<ProductList> GetAllProducts(Empty empty, ServerCallContext context)
+    {
+        var productList = new ProductList();
+        var products = _repository.GetAllProducts();
+        
+        productList.Products.AddRange(products.Select(p => new GRPC_Product_Service.Product()
+        {
+            ProductID = p.ProductID,
+            Name = p.Name,
+            Price = p.Price,
+            CategoryID = p.CategoryID,
+            OnSale = p.OnSale,
+            StockLevel = p.StockLevel,
+        }));
+
+        return Task.FromResult(productList);
+    }
 }
