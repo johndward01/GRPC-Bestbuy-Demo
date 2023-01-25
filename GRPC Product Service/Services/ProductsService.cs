@@ -59,4 +59,18 @@ public class ProductsService : Products.ProductsBase
 
         return Task.FromResult(productList);
     }
+
+    //public override Task<Product> UpdateProduct(Product product, ServerCallContext context)
+    //{
+    //    _repository.UpdateProduct(new BestBuyProductRepo.Models.Product()
+    //    {
+    //        ProductID = product.ProductID,
+    //        Name = product.Name,
+    //        Price = product.Price,
+    //        CategoryID = product.CategoryID,
+    //        OnSale = product.OnSale,
+    //        StockLevel = product.StockLevel,
+    //    });
+    //    return Task.FromResult(product);
+    //}
 }
