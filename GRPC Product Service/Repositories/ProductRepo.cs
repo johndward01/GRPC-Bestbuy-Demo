@@ -1,10 +1,8 @@
-﻿using BestBuyProductRepo.Interfaces;
-using BestBuyProductRepo.Models;
+﻿using GRPC_Product_Service.Interfaces;
 using Dapper;
 using System.Data;
 
-namespace BestBuyProductService.Repositories;
-
+namespace GRPC_Product_Service.Repositories;
 
 public class ProductRepo : IProductRepository
 {
@@ -28,8 +26,8 @@ public class ProductRepo : IProductRepository
 
     public void UpdateProduct(Product product)
     {
-        _conn.Execute("UPDATE products SET Name = @name, Price = @price WHERE ProductID = @id",
-            new { name = product.Name, price = product.Price, id = product.ProductID });
+        _conn.Execute("UPDATE products SET Name = @name, Price = @price, CategoryID = @catID, OnSale = @onsale, StockLevel = @stocklevel WHERE ProductID = @id;",
+            new { name = product.Name, price = product.Price, catID = product.CategoryID, onsale = product.OnSale, stocklevel = product.StockLevel, id = product.ProductID });
     }
 
     public void InsertProduct(Product productToInsert)

@@ -5,7 +5,6 @@ using GRPC_Product_Service;
 using var channel = GrpcChannel.ForAddress("https://localhost:7026");
 var client = new Products.ProductsClient(channel);
 
-
 #region Get Product
 //var reply = client.GetProduct(new ProductId { Id = 1 });
 //Console.WriteLine(reply.ProductID);
@@ -16,7 +15,9 @@ var client = new Products.ProductsClient(channel);
 //Console.WriteLine(reply.StockLevel);
 //Console.WriteLine();
 //Console.WriteLine("============================================================");
+//Console.WriteLine();
 #endregion
+
 #region Get All Products
 //var reply = client.GetAllProducts(new Empty());
 //for (int i = 0; i < reply.Products.Count; i++)
@@ -31,10 +32,33 @@ var client = new Products.ProductsClient(channel);
 //    Console.WriteLine();
 //}
 #endregion
+
+#region Update Product
+var productToUpdate = client.GetProduct(new ProductId() { Id = 945 });
+productToUpdate.Name = "UPDATED V2 via GRPC_Console_Client";
+productToUpdate.Price = 100.00;
+productToUpdate.CategoryID = 10;
+productToUpdate.OnSale = 0;
+productToUpdate.StockLevel = 100;
+
+var reply = client.UpdateProduct(productToUpdate);
+var updatedProduct = client.GetProduct(new ProductId() { Id = 945 });
+Console.WriteLine(updatedProduct.ProductID);
+Console.WriteLine(updatedProduct.Name);
+Console.WriteLine(updatedProduct.Price);
+Console.WriteLine(updatedProduct.CategoryID);
+Console.WriteLine(updatedProduct.OnSale);
+Console.WriteLine(updatedProduct.StockLevel);
+Console.WriteLine();
+Console.WriteLine("============================================================");
+#endregion
+
 #region Insert Product
 //TODO: 
 
 #endregion
 
+Console.WriteLine("End");
 Console.ReadLine();
+
 

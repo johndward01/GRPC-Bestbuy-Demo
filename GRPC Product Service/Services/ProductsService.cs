@@ -1,5 +1,5 @@
-﻿using BestBuyProductRepo.Interfaces;
-using Grpc.Core;
+﻿using Grpc.Core;
+using GRPC_Product_Service.Interfaces;
 using System.Data;
 
 namespace GRPC_Product_Service.Services;
@@ -7,6 +7,7 @@ namespace GRPC_Product_Service.Services;
 public class ProductsService : Products.ProductsBase
 {
     private readonly IProductRepository _repository;
+    private static readonly Empty _empty = new();
 
     public ProductsService(IProductRepository repository)
     {
@@ -60,17 +61,17 @@ public class ProductsService : Products.ProductsBase
         return Task.FromResult(productList);
     }
 
-    //public override Task<Product> UpdateProduct(Product product, ServerCallContext context)
-    //{
-    //    _repository.UpdateProduct(new BestBuyProductRepo.Models.Product()
-    //    {
-    //        ProductID = product.ProductID,
-    //        Name = product.Name,
-    //        Price = product.Price,
-    //        CategoryID = product.CategoryID,
-    //        OnSale = product.OnSale,
-    //        StockLevel = product.StockLevel,
-    //    });
-    //    return Task.FromResult(product);
-    //}
+    public override Task<Empty> UpdateProduct(Product product, ServerCallContext context)
+    {
+        _repository.UpdateProduct(new Product()
+        {
+            ProductID = product.ProductID,
+            Name = product.Name,
+            Price = product.Price,
+            CategoryID = product.CategoryID,
+            OnSale = product.OnSale,
+            StockLevel = product.StockLevel,
+        });
+        return Task.FromResult(_empty);
+    }
 }

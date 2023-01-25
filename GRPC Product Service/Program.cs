@@ -1,6 +1,5 @@
-using BestBuyProductRepo.Interfaces;
-using BestBuyProductRepo.Models;
-using BestBuyProductService.Repositories;
+using GRPC_Product_Service.Interfaces;
+using GRPC_Product_Service.Repositories;
 using GRPC_Product_Service.Services;
 using MySql.Data.MySqlClient;
 using System.Data;
@@ -26,9 +25,6 @@ var app = builder.Build();
 app.MapGrpcService<ProductsService>();
 app.MapGet("/", () => "Communication with gRPC endpoints must be made through a gRPC client." +
 " To learn how to create a client, visit: https://go.microsoft.com/fwlink/?linkid=2086909");
-
-
-
 
 
 app.Run();

@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace GRPC_Product_Service.Models;
 
-namespace BestBuyProductRepo.Models;
 public class Product
 {
     public int ProductID { get; set; }
