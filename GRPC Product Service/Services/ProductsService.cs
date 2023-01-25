@@ -74,4 +74,10 @@ public class ProductsService : Products.ProductsBase
         });
         return Task.FromResult(_empty);
     }
+
+    public override Task<Empty> InsertProduct(Product product, ServerCallContext context)
+    {
+        _repository.InsertProduct(product);
+        return Task.FromResult(new Empty());
+    }
 }
