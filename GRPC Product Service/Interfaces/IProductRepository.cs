@@ -6,5 +6,5 @@ public interface IProductRepository
     public IEnumerable<Product> GetAllProducts();
     public void UpdateProduct(Product product);
     public void InsertProduct(Product productToInsert);
-    public void DeleteProduct(Product product);
+    public void DeleteProduct(ProductId id);
 }

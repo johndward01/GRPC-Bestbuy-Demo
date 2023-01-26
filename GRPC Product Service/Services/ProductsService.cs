@@ -1,4 +1,5 @@
-﻿using Grpc.Core;
+﻿using Google.Protobuf.WellKnownTypes;
+using Grpc.Core;
 using GRPC_Product_Service.Interfaces;
 using System.Data;
 
@@ -7,7 +8,6 @@ namespace GRPC_Product_Service.Services;
 public class ProductsService : Products.ProductsBase
 {
     private readonly IProductRepository _repository;
-    private static readonly Empty _empty = new();
 
     public ProductsService(IProductRepository repository)
     {
@@ -72,12 +72,18 @@ public class ProductsService : Products.ProductsBase
             OnSale = product.OnSale,
             StockLevel = product.StockLevel,
         });
-        return Task.FromResult(_empty);
+        return Task.FromResult(new Empty());
     }
 
     public override Task<Empty> InsertProduct(Product product, ServerCallContext context)
     {
         _repository.InsertProduct(product);
+        return Task.FromResult(new Empty());
+    }
+
+    public override Task<Empty> DeleteProduct(ProductId id, ServerCallContext context)
+    {
+        _repository.DeleteProduct(id);
         return Task.FromResult(new Empty());
     }
 }

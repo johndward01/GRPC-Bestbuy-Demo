@@ -36,11 +36,11 @@ public class ProductRepo : IProductRepository
             new { name = productToInsert.Name, price = productToInsert.Price, categoryID = productToInsert.CategoryID });
     }    
 
-    public void DeleteProduct(Product product)
+    public void DeleteProduct(ProductId productId)
     {
-        _conn.Execute("DELETE FROM Reviews WHERE ProductID = @id;", new { id = product.ProductID });
-        _conn.Execute("DELETE FROM Sales WHERE ProductID = @id;", new { id = product.ProductID });
-        _conn.Execute("DELETE FROM Products WHERE ProductID = @id;", new { id = product.ProductID });
+        _conn.Execute("DELETE FROM Reviews WHERE ProductID = @id;", new { id = productId.Id });
+        _conn.Execute("DELETE FROM Sales WHERE ProductID = @id;", new { id = productId.Id });
+        _conn.Execute("DELETE FROM Products WHERE ProductID = @id;", new { id = productId.Id });
     }
 }
 
