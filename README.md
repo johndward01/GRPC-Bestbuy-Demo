@@ -1,8 +1,8 @@
 # GRPC-Bestbuy-Demo
 
-The solution contains 2 project files (Client & Server)
-Run the server project first then the console app
-You will need a connection string in the appsettings to the bestbuy db
+- The solution contains 2 project files (Client & Server)
+- Run the server project first then the console app
+- You will need a connection string in the appsettings to the bestbuy db
 
 #### sources
 > https://learn.microsoft.com/en-us/aspnet/core/grpc/services?view=aspnetcore-7.0
