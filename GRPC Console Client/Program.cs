@@ -78,21 +78,20 @@ var client = new Products.ProductsClient(channel);
 #endregion
 
 #region Delete Product
-
-int productID = 951; // You need to go into the db and make sure this product exists
-client.DeleteProduct(new ProductId { Id = productID });
-var products = client.GetAllProducts(new Empty());
-for (int i = 0; i < products.Products.Count; i++)
-{
-    Console.WriteLine(products.Products[i].ProductID);
-    Console.WriteLine(products.Products[i].Name);
-    Console.WriteLine(products.Products[i].Price);
-    Console.WriteLine(products.Products[i].CategoryID);
-    Console.WriteLine(products.Products[i].OnSale);
-    Console.WriteLine(products.Products[i].StockLevel);
-    Console.WriteLine();
-    Console.WriteLine();
-}
+//int productID = 951; // You need to go into the db and make sure this product exists
+//client.DeleteProduct(new ProductId { Id = productID });
+//var products = client.GetAllProducts(new Empty());
+//for (int i = 0; i < products.Products.Count; i++)
+//{
+//    Console.WriteLine(products.Products[i].ProductID);
+//    Console.WriteLine(products.Products[i].Name);
+//    Console.WriteLine(products.Products[i].Price);
+//    Console.WriteLine(products.Products[i].CategoryID);
+//    Console.WriteLine(products.Products[i].OnSale);
+//    Console.WriteLine(products.Products[i].StockLevel);
+//    Console.WriteLine();
+//    Console.WriteLine();
+//}
 #endregion
 
 
